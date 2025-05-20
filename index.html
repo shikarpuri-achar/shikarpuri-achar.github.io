@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abdul Qayoom Achar Store</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    /* ===== LOADING SCREEN ===== */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #6D597A, #355070);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+      color: white;
+    }
+
+    .loader-text {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      width: 80%;
+      max-width: 300px;
+      height: 10px;
+      border-radius: 10px;
+      background-color: #ccc;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #facc15;
+      animation: load 2s ease-in-out forwards;
+    }
+
+    @keyframes load {
+      to { width: 100%; }
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    header {
+      background: linear-gradient(135deg, #6D597A, #355070);
+      color: white;
+      padding: 60px 20px 40px;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      max-width: 750px;
+      margin: auto;
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+
+    .location {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: #fbbf24;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .buttons button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .store { background-color: #f43f5e; color: white; }
+    .store:hover { background-color: #be123c; }
+    .contact {
+      background-color: white;
+      color: #1f2937;
+      border: 2px solid #1f2937;
+    }
+    .contact:hover {
+      background-color: #1f2937;
+      color: white;
+    }
+
+    footer {
+      background-color: #1f2937;
+      color: white;
+      padding: 50px 20px 30px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-section a:hover { color: #facc15; }
+
+    .social-icons a {
+      margin-right: 12px;
+      font-size: 1.4rem;
+      color: #cbd5e1;
+    }
+
+    .social-icons a:hover { color: #facc15; }
+
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container { flex-direction: column; text-align: center; }
+      .buttons { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-text">Loading Abdul Qayoom Achar Store...</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <header>
+    <h1>Abdul Qayoom Achar Store<br>Shikarpur</h1>
+    <p class="description">
+      Abdul Qayoom Achar Store is a well-known and established shop in Shikarpur, specializing in high-quality spices, mouthwatering pickles, and traditional Pakistani food products. With a reputation for authenticity and taste, the store offers a wide variety of homemade and handcrafted items.
+    </p>
+    <div class="location">📍 Location: Shikarpur, Sindh, Pakistan</div>
+    <div class="buttons">
+      <button class="store" onclick="window.location.href='index.html'">Our Store</button>
+      <button class="contact">Contact Us</button>
+    </div>
+  </header>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Useful Links</h3>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Products</a>
+        <a href="#">Services</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>
+          We are passionate about creating quality food products. Our goal is to provide authentic taste and excellent service for customers all across Pakistan.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <a href="mailto:info@yourcompany.example.com">info@yourcompany.example.com</a>
+        <a href="tel:+15555555556">+1 555-555-5556</a>
+        <div class="social-icons">
+          <a href="#">Fb</a>
+          <a href="#">In</a>
+          <a href="#">Tw</a>
+          <a href="#">Web</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 Abdul Qayoom Achar Store - All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript to Hide Loader -->
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>
