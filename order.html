@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Order Page</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 700px; margin: 50px auto; padding: 20px; }
+  h1 { color: #2c3e50; }
+  .product-details { background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+</style>
+</head>
+<body>
+
+<h1>Order Your Product</h1>
+
+<div id="product-info" class="product-details">
+  Loading product details...
+</div>
+
+<script>
+  // Sample products data
+  const products = {
+    "mango-achar": {
+      name: "Mango Achar",
+      price: "800 Rs per 1KG",
+      desc: "Traditional style mango pickle with perfect blend of spices."
+    },
+    "green-chilli-achar": {
+      name: "Green Chilli Achar",
+      price: "700 Rs per 1KG",
+      desc: "Spicy green chillies marinated in mustard oil and spices."
+    },
+    "lemon-achar": {
+      name: "Lemon Achar",
+      price: "750 Rs per 1KG",
+      desc: "Tangy lemon pickle made with fresh lemons and select spices."
+    }
+  };
+
+  // Function to get URL query param
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  const productKey = getQueryParam('product');
+  const productInfoDiv = document.getElementById('product-info');
+
+  if(productKey && products[productKey]) {
+    const product = products[productKey];
+    productInfoDiv.innerHTML = `
+      <h2>${product.name}</h2>
+      <p><strong>Price:</strong> ${product.price}</p>
+      <p>${product.desc}</p>
+      <button onclick="alert('Proceed to purchase flow for ${product.name}')">Purchase Now</button>
+    `;
+  } else {
+    productInfoDiv.innerHTML = "<p>Sorry, product not found.</p>";
+  }
+</script>
+
+</body>
+</html>
