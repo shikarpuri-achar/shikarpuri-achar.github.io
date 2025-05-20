@@ -2,62 +2,136 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Order Page</title>
 <style>
-  body { font-family: Arial, sans-serif; max-width: 700px; margin: 50px auto; padding: 20px; }
-  h1 { color: #2c3e50; }
-  .product-details { background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    color: #222;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background: #fff;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #1e3a8a;
+    letter-spacing: 1.2px;
+  }
+
+  .product-details {
+    padding: 25px 20px;
+    background: #f3f9ff;
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px #dbeeff;
+    margin-bottom: 30px;
+  }
+
+  .product-details h2 {
+    color: #0b3d91;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .product-details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #3c4a6b;
+  }
+
+  button.purchase-btn {
+    background: #1e40af;
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(30, 64, 175, 0.4);
+  }
+
+  button.purchase-btn:hover {
+    background: #3b82f6;
+    box-shadow: 0 7px 20px rgba(59, 130, 246, 0.6);
+  }
+
+  p.error {
+    color: #b91c1c;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 30px 10px;
+    }
+    .container {
+      padding: 25px 20px;
+    }
+    .product-details h2 {
+      font-size: 1.5rem;
+    }
+    button.purchase-btn {
+      width: 100%;
+      padding: 15px 0;
+    }
+  }
 </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Order Your Product</h1>
 
-<h1>Order Your Product</h1>
+    <div id="product-info" class="product-details">
+      Loading product details...
+    </div>
+  </div>
 
-<div id="product-info" class="product-details">
-  Loading product details...
-</div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
 
-<script>
-  // Sample products data
-  const products = {
-    "mango-achar": {
-      name: "Mango Achar",
-      price: "800 Rs per 1KG",
-      desc: "Traditional style mango pickle with perfect blend of spices."
-    },
-    "green-chilli-achar": {
-      name: "Green Chilli Achar",
-      price: "700 Rs per 1KG",
-      desc: "Spicy green chillies marinated in mustard oil and spices."
-    },
-    "lemon-achar": {
-      name: "Lemon Achar",
-      price: "750 Rs per 1KG",
-      desc: "Tangy lemon pickle made with fresh lemons and select spices."
-    }
-  };
+  const product = params.get('product');
+  const packageSize = params.get('package');
+  const zone = params.get('zone');
+  const name = params.get('name');
+  const phone = params.get('phone');
+  const address = params.get('address');
 
-  // Function to get URL query param
-  function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-  }
-
-  const productKey = getQueryParam('product');
-  const productInfoDiv = document.getElementById('product-info');
-
-  if(productKey && products[productKey]) {
-    const product = products[productKey];
-    productInfoDiv.innerHTML = `
-      <h2>${product.name}</h2>
-      <p><strong>Price:</strong> ${product.price}</p>
-      <p>${product.desc}</p>
-      <button onclick="alert('Proceed to purchase flow for ${product.name}')">Purchase Now</button>
+  if (product && packageSize && zone && name && phone && address) {
+    document.getElementById('product-info').innerHTML = `
+      <h2>Order Summary</h2>
+      <p><strong>Product:</strong> ${product}</p>
+      <p><strong>Package:</strong> ${packageSize}</p>
+      <p><strong>Delivery Area:</strong> ${zone}</p>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Address:</strong> ${address}</p>
+      <button onclick="alert('Proceed to payment or next steps')">Proceed</button>
     `;
   } else {
-    productInfoDiv.innerHTML = "<p>Sorry, product not found.</p>";
+    document.getElementById('product-info').innerHTML = `<p class="error">No order details found. Please submit your order first.</p>`;
   }
-</script>
-
+});
+  </script>
 </body>
 </html>
